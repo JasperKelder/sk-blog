@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../styles.css';
+	import '../styles.pcss';
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { navigating } from '$app/stores';
 	import Navigation from '$lib/Navigation.svelte';
