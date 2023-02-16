@@ -1,0 +1,31 @@
+:root {
+	--background-color: #11191f;
+	--color: hsl(205deg, 16%, 77%);
+	--primary: hsl(195deg, 85%, 41%);
+	--primary-hover: hsl(195deg, 80%, 50%);
+	--secondary: hsl(205deg, 15%, 41%);
+	--secondary-hover: hsl(205deg, 10%, 50%);
+	--green: #2e7d32;
+	--red: #b71c1c;
+
+	--primary-focus: rgba(16, 149, 193, 0.25);
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	scrollbar-gutter: stable;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 1.6rem;
+}
