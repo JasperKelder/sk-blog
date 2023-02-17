@@ -1,5 +1,13 @@
+<script>
+	import { enhance } from '$app/forms';
+</script>
+
 <h1>Register</h1>
-<form>
+
+<form method="POST" use:enhance>
+	<label for="name">Name</label>
+	<input type="text" id="name" name="name" required />
+
 	<label for="username">Username</label>
 	<input type="text" id="username" name="username" required />
 

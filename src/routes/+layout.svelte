@@ -4,6 +4,9 @@
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { navigating } from '$app/stores';
 	import Navigation from '$lib/Navigation.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	$: navigate = ($navigating?.from !== $navigating?.to).toString();
 </script>
@@ -12,16 +15,10 @@
 	<title>SvelteKit Blog</title>
 </svelte:head>
 
-<Navigation />
+<Navigation {data} />
 
 <PageTransition trigger={navigate}>
 	<div class="container">
 		<slot />
 	</div>
 </PageTransition>
-
-<style lang="postcss">
-	div {
-		margin-top: 3rem;
-	}
-</style>
