@@ -5,6 +5,7 @@
 	let action = 'login';
 	let username: string;
 	let password: string;
+	let name: string;
 
 	function switchAction() {
 		action = action === 'login' ? 'register' : 'login';
@@ -39,7 +40,7 @@
 			<input type="password" id="password" name="password" bind:value={password} required />
 
 			<label for="name">Name</label>
-			<input type="text" id="name" name="name" required />
+			<input type="text" id="name" name="name" bind:value={name} required />
 
 			<button type="submit">Register</button>
 		</form>
