@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	onMount(() => motion != window.matchMedia(`(prefers-reduced-motion: reduce)`).matches);
+	onMount(() => (motion = !window.matchMedia(`(prefers-reduced-motion: reduce)`).matches));
 
 	export let trigger = '';
 	let motion = true;
