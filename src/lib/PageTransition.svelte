@@ -4,12 +4,13 @@
 
 	onMount(() => (motion = !window.matchMedia(`(prefers-reduced-motion: reduce)`).matches));
 
-	export let trigger = '';
 	let motion = true;
 	let time = 150;
+
+	export let trigger = '';
 </script>
 
-<div class="transition-container">
+<div class="container">
 	{#key trigger}
 		{#if motion}
 			<div in:fade={{ delay: time, duration: time }} out:fade={{ duration: time }}>
@@ -21,15 +22,15 @@
 	{/key}
 </div>
 
-<style>
-	.transition-container {
+<style lang="postcss">
+	.container {
 		display: grid;
 		grid-template-rows: 1fr;
 		grid-template-columns: 1fr;
-	}
 
-	.transition-container > * {
-		grid-row: 1;
-		grid-column: 1;
+		& > * {
+			grid-row: 1;
+			grid-column: 1;
+		}
 	}
 </style>
