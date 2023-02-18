@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { PageData } from '../routes/$types';
 
 	export let data: PageData;
@@ -18,8 +19,8 @@
 				<a href="/admin">Admin</a>
 			</li>
 			<li>
-				<form method="POST">
-					<button formaction="/logout" type="submit">Logout</button>
+				<form method="POST" action="?/logout" use:enhance>
+					<button type="submit">Logout</button>
 				</form>
 			</li>
 		{/if}

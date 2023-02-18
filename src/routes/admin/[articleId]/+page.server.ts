@@ -1,6 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 import { prisma } from '$lib/server/prisma';
 import { error, fail, redirect } from '@sveltejs/kit';
+import { auth } from '$lib/server/lucia';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const { user, session } = await locals.validateUser();
@@ -30,6 +31,18 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 };
 
 export const actions: Actions = {
+	logout: async ({ locals }) => {
+		const session = await locals.validate();
+		if (!session) {
+			throw redirect(302, '/');
+		}
+
+		await auth.invalidateSession(session.sessionId);
+		locals.setSession(null);
+
+		throw redirect(302, '/');
+	},
+
 	updateArticle: async ({ request, params, locals }) => {
 		const { user, session } = await locals.validateUser();
 		if (!(user && session)) {
