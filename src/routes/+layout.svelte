@@ -18,7 +18,5 @@
 <Navigation {data} />
 
 <PageTransition trigger={navigate}>
-	<div class="container">
-		<slot />
-	</div>
+	<slot />
 </PageTransition>
