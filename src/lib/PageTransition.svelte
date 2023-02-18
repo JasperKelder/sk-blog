@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
+
+	onMount(() => motion != window.matchMedia(`(prefers-reduced-motion: reduce)`).matches);
 
 	export let trigger = '';
-	let noMotion = false;
-
-	onMount(() => (noMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches));
+	let motion = true;
+	let time = 150;
 </script>
 
 <div class="transition-container">
 	{#key trigger}
-		{#if !noMotion}
-			<div in:fade={{ delay: 100, duration: 100 }} out:fade={{ duration: 100 }}>
+		{#if motion}
+			<div in:fade={{ delay: time, duration: time }} out:fade={{ duration: time }}>
 				<slot />
 			</div>
 		{:else}
