@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		throw error(401, 'Unauthorized');
 	}
 
-	const getArticle = async (userId: string) => {
+	const getArticle = async () => {
 		const article = await prisma.article.findUnique({
 			where: {
 				id: Number(params.articleId)
@@ -18,15 +18,12 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		if (!article) {
 			throw error(404, 'Article not found');
 		}
-		if (article.userId !== user.userId) {
-			throw error(403, 'Unauthorized');
-		}
 
 		return article;
 	};
 
 	return {
-		article: getArticle(user.userId)
+		article: getArticle()
 	};
 };
 
@@ -55,15 +52,12 @@ export const actions: Actions = {
 		>;
 
 		try {
-			const article = await prisma.article.findUniqueOrThrow({
+			await prisma.article.findUniqueOrThrow({
 				where: {
 					id: Number(params.articleId)
 				}
 			});
 
-			if (article.userId !== user.userId) {
-				throw error(403, 'Forbidden to edit this article.');
-			}
 			await prisma.article.update({
 				where: {
 					id: Number(params.articleId)
@@ -78,6 +72,6 @@ export const actions: Actions = {
 			return fail(500, { message: 'Could not update article' });
 		}
 
-		throw redirect(302, '/');
+		throw redirect(302, '/admin');
 	}
 };
