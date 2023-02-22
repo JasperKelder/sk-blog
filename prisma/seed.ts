@@ -1,32 +1,34 @@
-// import { PrismaClient } from '@prisma/client';
-import { auth } from '../src/lib/server/lucia';
+import { PrismaClient } from '@prisma/client';
 
-// const db = new PrismaClient();
+const db = new PrismaClient();
 
-// type User = {
-// 	id: number;
-// 	name: string;
-// 	usename: string;
-// };
+type Article = {
+	title: string;
+	content: string;
+};
 
-// type Article = {
-// 	id: number;
-// 	title: string;
-// 	content: string;
-// };
+const articles: Article[] = [
+	{
+		title: 'Example Article Title',
+		content:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi quae modi dignissimos omnis. Dolore, voluptates laboriosam fuga nesciunt a id ipsa minima porro. Doloremque ratione sed ea ad harum.'
+	},
+	{
+		title: 'Example Article Title 2',
+		content:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi quae modi dignissimos omnis. Dolore, voluptates laboriosam fuga nesciunt a id ipsa minima porro. Doloremque ratione sed ea ad harum.'
+	}
+];
 
 async function main() {
-	await auth.createUser({
-		key: {
-			providerId: 'username',
-			providerUserId: 'a',
-			password: 'a'
-		},
-		attributes: {
-			name: 'Admin',
-			username: 'a'
-		}
-	});
+	for (const article of articles) {
+		await db.article.create({
+			data: {
+				title: article.title,
+				content: article.content
+			}
+		});
+	}
 }
 
 main();
