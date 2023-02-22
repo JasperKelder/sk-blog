@@ -47,7 +47,7 @@
 	</FlyDownTransition>
 {/if}
 
-<style lang="postcss">
+<style lang="scss">
 	form {
 		margin: 0 auto;
 		max-width: 30rem;

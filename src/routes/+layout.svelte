@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@picocss/pico';
-	import '../styles.css';
+	import '../styles.scss';
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { navigating } from '$app/stores';
 	import Navigation from '$lib/Navigation.svelte';

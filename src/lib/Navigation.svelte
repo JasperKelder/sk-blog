@@ -27,7 +27,7 @@
 	</ul>
 </nav>
 
-<style lang="postcss">
+<style lang="scss">
 	nav {
 		display: flex;
 		justify-content: center;

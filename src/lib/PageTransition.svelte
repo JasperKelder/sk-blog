@@ -22,7 +22,7 @@
 	{/key}
 </div>
 
-<style lang="postcss">
+<style lang="scss">
 	.container {
 		display: grid;
 		grid-template-rows: 1fr;

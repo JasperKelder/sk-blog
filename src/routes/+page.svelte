@@ -14,16 +14,19 @@
 		<h1>Blog</h1>
 
 		{#each articles as article (article.id)}
-			<article
+			<a
+				href="/{article.id}"
 				in:fade={{ duration: 400 }}
 				out:fade={{ duration: 300 }}
 				animate:flip={{ duration: 600 }}
 			>
-				<header>{article.title}</header>
-				<p>
-					{article.content}
-				</p>
-			</article>
+				<article>
+					<header>{article.title}</header>
+					<p>
+						{article.content}
+					</p>
+				</article></a
+			>
 		{/each}
 	</div>
 </div>
