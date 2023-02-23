@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { PageData } from '../routes/$types';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 </script>
@@ -8,15 +9,15 @@
 <nav>
 	<ul>
 		<li>
-			<a href="/">Blog</a>
+			<a href="/" class:active={$page.url.pathname === '/'}>Blog</a>
 		</li>
 		{#if !data.user}
 			<li>
-				<a href="/login">Login</a>
+				<a href="/login" class:active={$page.url.pathname === '/login'}>Login</a>
 			</li>
 		{:else}
 			<li>
-				<a href="/admin">Admin</a>
+				<a href="/admin" class:active={$page.url.pathname === '/admin'}>Admin</a>
 			</li>
 			<li>
 				<form method="POST" action="?/logout" use:enhance>
@@ -45,5 +46,9 @@
 
 	form {
 		margin: 0.5rem;
+	}
+
+	.active {
+		text-decoration: underline;
 	}
 </style>

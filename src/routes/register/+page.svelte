@@ -7,19 +7,19 @@
 </script>
 
 <FlyDownTransition>
-	<h1>Login</h1>
+	<h1>Register</h1>
 	<div>
-		<a href="/register">Switch to Register</a>
+		<a href="/login">Switch to Login</a>
 	</div>
 
-	<form method="POST" action="?/login" use:enhance>
+	<form method="POST" action="?/register" use:enhance>
 		<label for="username">Username</label>
 		<input type="text" id="username" name="username" bind:value={$username} required />
 
 		<label for="password">Password</label>
 		<input type="password" id="password" name="password" bind:value={password} required />
 
-		<button type="submit">Login</button>
+		<button type="submit">Register</button>
 	</form>
 </FlyDownTransition>
 

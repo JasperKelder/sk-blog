@@ -3,7 +3,7 @@
 	import '../styles.scss';
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { navigating } from '$app/stores';
-	import Navigation from '$lib/Navigation.svelte';
+	import Header from '$lib/Header.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -15,8 +15,10 @@
 	<title>SvelteKit Blog</title>
 </svelte:head>
 
-<Navigation {data} />
+<Header {data} />
 
 <PageTransition trigger={navigate}>
-	<slot />
+	<main>
+		<slot />
+	</main>
 </PageTransition>

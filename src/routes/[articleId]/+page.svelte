@@ -1,24 +1,29 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 
+	let comment: String;
 	export let data: PageData;
 	$: ({ article } = data);
 </script>
 
-<article>
-	<header>{article.title}</header>
-	<p>
-		{article.content}
-	</p>
+<a href="/">
+	<article>
+		<header>{article.title}</header>
+		<p>
+			{article.content}
+		</p>
+	</article>
+</a>
 
-	<a href="/">Back</a>
-</article>
+<form method="POST" action="?/comment" use:enhance>
+	<input type="text" id="comment" name="comment" bind:value={comment} required />
+
+	<button type="submit">Comment</button>
+</form>
 
 <style lang="scss">
-	article {
-		> a {
-			display: flex;
-			justify-content: center;
-		}
+	a {
+		text-decoration: none;
 	}
 </style>
