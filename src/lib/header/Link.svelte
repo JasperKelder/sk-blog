@@ -6,7 +6,7 @@
 	export let page: Page;
 	export let data: PageData;
 
-	const name = to === '' ? 'Blog' : to.charAt(0).toUpperCase() + to.slice(1);
+	const name = to === '' ? 'Blog' : to;
 </script>
 
 {#if to === '' || (!data.user && to === 'login') || (data.user?.role === 'ADMIN' && to === 'admin')}
@@ -21,6 +21,7 @@
 		margin: 0.5rem;
 		border-radius: 1rem;
 		font-size: 1.2rem;
+		text-transform: capitalize;
 	}
 
 	.active {

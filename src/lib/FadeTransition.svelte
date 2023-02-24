@@ -5,21 +5,22 @@
 	onMount(() => (motion = !window.matchMedia(`(prefers-reduced-motion: reduce)`).matches));
 
 	let motion = true;
-	let time = 150;
 
-	export let trigger = '';
+	export let trigger: any = null;
+	export let start: {};
+	export let stop: {};
 </script>
 
 <div class="container">
-	{#key trigger}
-		{#if motion}
-			<div in:fade={{ delay: time, duration: time }} out:fade={{ duration: time }}>
+	{#if motion}
+		{#key trigger}
+			<div in:fade={start} out:fade={stop}>
 				<slot />
 			</div>
-		{:else}
-			<slot />
-		{/if}
-	{/key}
+		{/key}
+	{:else}
+		<slot />
+	{/if}
 </div>
 
 <style lang="scss">

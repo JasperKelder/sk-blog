@@ -1,12 +1,24 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import FlyDownTransition from '$lib/FlyDownTransition.svelte';
+	import FlyTransition from '$lib/FlyTransition.svelte';
 	import { username } from '$lib/userStore';
 
 	let password: string;
+	const time = 150;
+	const direction = 200;
 </script>
 
-<FlyDownTransition>
+<FlyTransition
+	start={{
+		delay: time,
+		duration: time,
+		y: direction
+	}}
+	stop={{
+		duration: time,
+		y: direction
+	}}
+>
 	<h1>Register</h1>
 	<div>
 		<a href="/login">Switch to Login</a>
@@ -21,7 +33,7 @@
 
 		<button type="submit">Register</button>
 	</form>
-</FlyDownTransition>
+</FlyTransition>
 
 <style lang="scss">
 	form {

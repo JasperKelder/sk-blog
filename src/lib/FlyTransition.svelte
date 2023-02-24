@@ -5,24 +5,19 @@
 	onMount(() => (motion = !window.matchMedia(`(prefers-reduced-motion: reduce)`).matches));
 
 	let motion = true;
-	let time = 150;
+
+	export let trigger: any = null;
+	export let start: {};
+	export let stop: {};
 </script>
 
 <div class="container">
 	{#if motion}
-		<div
-			in:fly={{
-				delay: time,
-				duration: time,
-				y: 200
-			}}
-			out:fly={{
-				duration: time,
-				y: 200
-			}}
-		>
-			<slot />
-		</div>
+		{#key trigger}
+			<div in:fly={start} out:fly={stop}>
+				<slot />
+			</div>
+		{/key}
 	{:else}
 		<slot />
 	{/if}
@@ -33,9 +28,10 @@
 		display: grid;
 		grid-template-rows: 1fr;
 		grid-template-columns: 1fr;
-	}
-	.container > * {
-		grid-row: 1;
-		grid-column: 1;
+
+		& > * {
+			grid-row: 1;
+			grid-column: 1;
+		}
 	}
 </style>

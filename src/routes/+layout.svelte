@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '@picocss/pico';
 	import '../styles.scss';
-	import PageTransition from '$lib/PageTransition.svelte';
+	import FadeTransition from '$lib/FadeTransition.svelte';
 	import { navigating } from '$app/stores';
 	import Header from '$lib/header/Header.svelte';
 	import type { PageData } from './$types';
@@ -17,8 +17,8 @@
 
 <Header {data} />
 
-<PageTransition trigger={navigate}>
+<FadeTransition trigger={navigate} start={{ delay: 150, duration: 150 }} stop={{ duration: 150 }}>
 	<main>
 		<slot />
 	</main>
-</PageTransition>
+</FadeTransition>
