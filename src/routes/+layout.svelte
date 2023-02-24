@@ -3,7 +3,7 @@
 	import '../styles.scss';
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { navigating } from '$app/stores';
-	import Header from '$lib/Header.svelte';
+	import Header from '$lib/header/Header.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
