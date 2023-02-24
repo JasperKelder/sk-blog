@@ -21,6 +21,7 @@ model Comment {
 model User {
     id       String    @id @unique
     username String    @unique
+    role     String    @default("USER")
     session  Session[]
     Key      Key[]
 

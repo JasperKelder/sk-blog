@@ -1,9 +1,14 @@
 import type { Actions, PageServerLoad } from './$types';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
-import { fail, redirect } from '@sveltejs/kit';
 import { auth } from '$lib/server/lucia';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ locals }) => {
+	const { user, session } = await locals.validateUser();
+	if (!(user?.role === 'ADMIN' && session)) {
+		throw error(401, 'Unauthorized');
+	}
+
 	return {
 		articles: await prisma.article.findMany()
 	};

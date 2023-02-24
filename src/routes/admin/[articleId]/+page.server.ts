@@ -5,7 +5,7 @@ import { auth } from '$lib/server/lucia';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const { user, session } = await locals.validateUser();
-	if (!(user && session)) {
+	if (!(user?.role === 'ADMIN' && session)) {
 		throw error(401, 'Unauthorized');
 	}
 

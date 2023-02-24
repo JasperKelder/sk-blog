@@ -11,14 +11,16 @@
 		<li>
 			<a href="/" class:active={$page.url.pathname === '/'}>Blog</a>
 		</li>
+		{#if data.user?.role === 'ADMIN'}
+			<li>
+				<a href="/admin" class:active={$page.url.pathname === '/admin'}>Admin</a>
+			</li>
+		{/if}
 		{#if !data.user}
 			<li>
 				<a href="/login" class:active={$page.url.pathname === '/login'}>Login</a>
 			</li>
 		{:else}
-			<li>
-				<a href="/admin" class:active={$page.url.pathname === '/admin'}>Admin</a>
-			</li>
 			<li>
 				<form method="POST" action="?/logout" use:enhance>
 					<button type="submit">Logout</button>
@@ -50,5 +52,6 @@
 
 	.active {
 		text-decoration: underline;
+		text-decoration-skip-ink: none;
 	}
 </style>

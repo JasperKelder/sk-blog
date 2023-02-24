@@ -4,9 +4,9 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	try {
-		const name = 'a';
 		const username = 'a';
 		const password = 'a';
+		const role = 'ADMIN';
 
 		await auth.createUser({
 			key: {
@@ -15,8 +15,8 @@ export const load: PageServerLoad = async () => {
 				password
 			},
 			attributes: {
-				name,
-				username
+				username,
+				role
 			}
 		});
 	} catch (err) {
@@ -26,4 +26,4 @@ export const load: PageServerLoad = async () => {
 	throw redirect(302, '/login');
 };
 
-//TODO: move to seed script
+//TODO: move to seed script, role verification
