@@ -14,7 +14,7 @@
 		{#each links as link (link)}
 			{#if link !== 'logout'}
 				<Link to={link} {data} page={$page} />
-			{:else}
+			{:else if data.user}
 				<li>
 					<form method="POST" action="?/logout" use:enhance>
 						<button type="submit">Logout</button>
