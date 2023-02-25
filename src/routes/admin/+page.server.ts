@@ -10,7 +10,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 	}
 
 	return {
-		articles: await prisma.article.findMany()
+		articles: await prisma.article.findMany(),
+		users: await prisma.user.findMany()
 	};
 };
 

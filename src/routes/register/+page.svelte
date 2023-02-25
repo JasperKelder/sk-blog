@@ -6,19 +6,18 @@
 	let password: string;
 	const time = 150;
 	const direction = 200;
-</script>
-
-<FlyTransition
-	start={{
+	const start = {
 		delay: time,
 		duration: time,
 		y: direction
-	}}
-	stop={{
+	};
+	const stop = {
 		duration: time,
 		y: direction
-	}}
->
+	};
+</script>
+
+<FlyTransition {start} {stop}>
 	<h1>Register</h1>
 	<div>
 		<a href="/login">Switch to Login</a>
