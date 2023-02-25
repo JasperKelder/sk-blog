@@ -40,7 +40,7 @@ export const actions: Actions = {
 	},
 
 	register: async ({ request }) => {
-		const { name, username, password } = Object.fromEntries(await request.formData()) as Record<
+		const { username, password } = Object.fromEntries(await request.formData()) as Record<
 			string,
 			string
 		>;
@@ -53,7 +53,6 @@ export const actions: Actions = {
 					password
 				},
 				attributes: {
-					name,
 					username
 				}
 			});

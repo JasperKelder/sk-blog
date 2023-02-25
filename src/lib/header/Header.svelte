@@ -1,31 +1,29 @@
 <script lang="ts">
+	import type { PageData } from '../../routes/$types';
+	import Link from './Link.svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import FlyTransition from '$lib/FlyTransition.svelte';
-	import type { PageData } from '../../routes/$types';
-	import Link from './Link.svelte';
 
 	export let data: PageData;
 
-	const links = ['', 'admin', 'login', 'logout'];
 	const time = 150;
 	const direction = -200;
+	const start = {
+		delay: time,
+		duration: time,
+		x: direction
+	};
+	const stop = {
+		duration: time,
+		x: direction
+	};
+	const links = ['', 'admin', 'login', 'logout'];
 </script>
 
 <nav>
 	<ul>
-		<FlyTransition
-			trigger={data.user}
-			start={{
-				delay: time,
-				duration: time,
-				x: direction
-			}}
-			stop={{
-				duration: time,
-				x: direction
-			}}
-		>
+		<FlyTransition trigger={data.user?.username} {start} {stop}>
 			{#each links as link (link)}
 				{#if link !== 'logout'}
 					<Link to={link} {data} page={$page} />

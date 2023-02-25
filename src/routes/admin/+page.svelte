@@ -5,20 +5,37 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+	let selected: string;
+	let options = ['Articles', 'Users'];
 
 	$: ({ articles } = data);
 </script>
 
-<h1>Admin</h1>
-{#if data.user}
+<select bind:value={selected}>
+	{#each options as option}
+		<option value={option}>
+			{option}
+		</option>
+	{/each}</select
+>
+
+{#if selected === 'Articles'}
 	<div class="grid">
+		<form action="?/createArticle" method="POST" use:enhance transition:fade={{ duration: 150 }}>
+			<h3>New Article</h3>
+
+			<label for="title">Title</label>
+			<input type="text" id="title" name="title" />
+
+			<label for="title">Content</label>
+			<textarea id="content" name="content" rows={5} />
+
+			<button type="submit">Add Article</button>
+		</form>
+
 		<div>
 			{#each articles as article (article.id)}
-				<article
-					in:fade={{ duration: 400 }}
-					out:fade={{ duration: 300 }}
-					animate:flip={{ duration: 600 }}
-				>
+				<article transition:fade={{ duration: 150 }} animate:flip={{ duration: 600 }}>
 					<header>{article.title}</header>
 					<p>
 						{article.content}
@@ -33,17 +50,5 @@
 				</article>
 			{/each}
 		</div>
-
-		<form action="?/createArticle" method="POST" use:enhance>
-			<h3>New Article</h3>
-
-			<label for="title">Title</label>
-			<input type="text" id="title" name="title" />
-
-			<label for="title">Content</label>
-			<textarea id="content" name="content" rows={5} />
-
-			<button type="submit">Add Article</button>
-		</form>
 	</div>
 {/if}
