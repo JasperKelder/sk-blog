@@ -28,7 +28,12 @@
 
 {#if selected === 'Articles'}
 	<div class="grid">
-		<form action="?/createArticle" method="POST" use:enhance transition:fade={{ duration: 150 }}>
+		<form
+			action="/api/article?/create"
+			method="POST"
+			use:enhance
+			transition:fade={{ duration: 150 }}
+		>
 			<h3>New Article</h3>
 
 			<label for="title">Title</label>
@@ -48,7 +53,7 @@
 						{article.content}
 					</p>
 
-					<form action="?/deleteArticle&id={article.id}" method="POST" use:enhance>
+					<form action="/api/article?/delete&id={article.id}" method="POST" use:enhance>
 						<button type="submit" class="outline secondary">Delete Article</button>
 					</form>
 					<a href="/admin/{article.id}" role="button" class="outline constrast" style="width: 100%;"
