@@ -23,7 +23,7 @@
 		<a href="/register">Switch to Register</a>
 	</div>
 
-	<form method="POST" action="?/login" use:enhance>
+	<form method="POST" action="/api/user?/login" use:enhance>
 		<label for="username">Username</label>
 		<input type="text" id="username" name="username" bind:value={$username} required />
 
