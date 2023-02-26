@@ -29,7 +29,7 @@
 					<Link to={link} {data} page={$page} />
 				{:else if data.user}
 					<li>
-						<form method="POST" action="?/logout" use:enhance>
+						<form method="POST" action="/?/logout" use:enhance>
 							<button type="submit">Logout</button>
 						</form>
 					</li>
